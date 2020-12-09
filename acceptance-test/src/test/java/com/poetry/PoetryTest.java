@@ -2,7 +2,7 @@ package com.poetry;
 
 import com.poetry.impl.PoetryReader;
 import com.poetry.port.RequestVerse;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
