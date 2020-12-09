@@ -1,5 +1,8 @@
-package com.poetry.domain;
+package com.poetry;
 
+import com.poetry.impl.PoetryReader;
+import com.poetry.port.RequestVerse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,5 +17,8 @@ public class PoetryTest {
     @Test
     @DisplayName("Should get verse when asked for poetry")
     public void testTheLeftSidePort() {
+        RequestVerse requestVerse = new PoetryReader();
+        String verse = requestVerse.getVerse();
+        Assertions.assertEquals("Hello Nirmala", verse);
     }
 }

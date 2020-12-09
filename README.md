@@ -5,7 +5,7 @@ I was greatly influenced when I saw the video in YouTube about Alistair's hexago
 
 ## KATA - 1
 
-- Write the left side port for test for requesting poetry i.e. **`RequestVerse`**.
+- Write the left side port for test for requesting poetry i.e. **`PoetryReader.RequestVerse`**.
 - Write the domain i.e. **`PoetryReader`** which can be hardcoded. This very first version of the business logic returns an hard-coded result.
 
 ## KATA - 2
