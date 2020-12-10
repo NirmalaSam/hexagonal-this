@@ -1,24 +1,36 @@
 package com.poetry;
 
 import com.poetry.impl.PoetryReader;
+import com.poetry.port.ObtainPoem;
 import com.poetry.port.RequestVerse;
-import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
 public class PoetryTest {
 
     @Test
-    @DisplayName("Should get verse when asked for poetry")
+    @DisplayName("Should get hardcoded verse when asked for poetry")
     public void testTheLeftSidePort() {
         RequestVerse requestVerse = new PoetryReader();
         String verse = requestVerse.getVerse();
-        Assertions.assertEquals("Hello Nirmala", verse);
+        assertEquals("Stopping by Woods on a Snowy Evening" + "/n", verse);
+    }
+
+    @Test
+    @DisplayName("Should get verse when asked for poetry from stub")
+    public void testTheRightSidePort(@Mock ObtainPoem obtainPoem) {
+        when(obtainPoem.getVerseFromPoem()).thenReturn("Stopping by Woods on a Snowy Evening");
+        RequestVerse requestVerse = new PoetryReader(obtainPoem);
+        String verse = requestVerse.getVerse();
+        assertEquals("Stopping by Woods on a Snowy Evening" + "/n", verse);
     }
 }
