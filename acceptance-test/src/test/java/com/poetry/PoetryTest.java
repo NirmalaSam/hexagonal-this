@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
@@ -22,15 +24,15 @@ public class PoetryTest {
     public void testTheLeftSidePort() {
         RequestVerse requestVerse = new PoetryReader();
         String verse = requestVerse.getVerse();
-        Assertions.assertEquals("Stopping by Woods on a Snowy Evening", verse);
+        assertEquals("Stopping by Woods on a Snowy Evening" + "/n", verse);
     }
 
     @Test
     @DisplayName("Should get verse when asked for poetry from stub")
     public void testTheRightSidePort(@Mock ObtainPoem obtainPoem) {
-        Mockito.when(obtainPoem.getVerseFromPoem()).thenReturn("Stopping by Woods on a Snowy Evening");
+        when(obtainPoem.getVerseFromPoem()).thenReturn("Stopping by Woods on a Snowy Evening");
         RequestVerse requestVerse = new PoetryReader(obtainPoem);
         String verse = requestVerse.getVerse();
-        Assertions.assertEquals("Stopping by Woods on a Snowy Evening", verse);
+        assertEquals("Stopping by Woods on a Snowy Evening" + "/n", verse);
     }
 }

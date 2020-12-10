@@ -15,6 +15,6 @@ public class PoetryReader implements RequestVerse {
 
     @Override
     public String getVerse() {
-        return obtainPoem.getVerseFromPoem();
+        return obtainPoem.getVerseFromPoem() + "/n";
     }
 }
