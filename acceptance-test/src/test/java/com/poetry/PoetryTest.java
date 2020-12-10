@@ -22,7 +22,7 @@ public class PoetryTest {
     public void testTheLeftSidePort() {
         RequestVerse requestVerse = new PoetryReader();
         String verse = requestVerse.getVerse();
-        Assertions.assertEquals("Hello Nirmala", verse);
+        Assertions.assertEquals("Stopping by Woods on a Snowy Evening", verse);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PoetryTest {
     public void testTheRightSidePort(@Mock ObtainPoem obtainPoem) {
         Mockito.when(obtainPoem.getVerseFromPoem()).thenReturn("Stopping by Woods on a Snowy Evening");
         RequestVerse requestVerse = new PoetryReader(obtainPoem);
-        String verse = requestVerse.getVerseFromPoem();
+        String verse = requestVerse.getVerse();
         Assertions.assertEquals("Stopping by Woods on a Snowy Evening", verse);
     }
 }
